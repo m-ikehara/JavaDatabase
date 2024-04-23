@@ -15,14 +15,11 @@ public class ConnectMYSQL {
 		try (Connection conn = DriverManager.getConnection(url,user,password);){
 			
 			Statement st = conn.createStatement(); //データベースを送信する役割
-			ResultSet res = st.executeQuery("SELECT * FROM PRODUCT"); //データベースから結果を取得する役割
+			ResultSet res = st.executeQuery("SELECT AVG(PRICE) AS 'AVG' FROM PRODUCT WHERE CATEGORY_ID =6;"); //データベースから結果を取得する役割
 			
 			while(res.next()) {
-				int id = res.getInt("ID");
-				String name = res.getString("NAME");
-				int price = res.getInt("PRICE");
-				int categoryId = res.getInt("CATEGORY_ID");
-				System.out.println(String.format("ID:%d NAME:%s PRICE:%d CATEGORY_ID:%d", id,name,price,categoryId));
+				int avg = res.getInt("AVG");
+				System.out.println(String.format("AVG:%d", avg));
 			}
 			
 		} catch (SQLException e) {
