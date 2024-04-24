@@ -46,3 +46,4 @@ public class ConnectMYSQL {
 		}
 	}
 }
+//トランザクション制御
