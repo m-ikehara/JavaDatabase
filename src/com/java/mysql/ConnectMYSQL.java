@@ -14,7 +14,7 @@ public class ConnectMYSQL {
 		try (Connection conn = DriverManager.getConnection(url, user, password)) {
 			
 			String sql =
-					"UPDATE PRODUCT SET CATEGORY_ID = 3 WHERE CATEGORY_ID IS NULL";
+					"DELETE FROM PRODUCT WHERE PRICE=0";
 			Statement st = conn.createStatement(); // データベースを送信する役割
 			int count = st.executeUpdate(sql);
 			System.out.println("結果:" + count);
